@@ -25,6 +25,7 @@ const Logout = () => {
             type="material-community"
             name="at"
             iconStyle={styles.iconRight}
+            tvParallaxProperties={undefined}
           />
         }
       />
