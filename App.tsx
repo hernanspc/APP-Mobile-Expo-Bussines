@@ -9,21 +9,20 @@ import ContentLoader, {
 import SkeletonFbLoader from "./src/components/skeleton";
 import Home from "./src/screens/Home";
 import Logout from "./src/screens/Logout";
+import { Login } from "./src/screens/Login";
 
 export default function App() {
   const [user, setUser] = useState(undefined);
 
   return (
     <>
-      <StatusBar />
-      <View>
-        <StatusBar backgroundColor="#b8b8b8" />
-
-        <SafeAreaView style={styles.background}>
-          {/* <SkeletonFbLoader /> */}
-          {user ? <Home /> : <Logout />}
-        </SafeAreaView>
-      </View>
+      {/* <StatusBar /> */}
+      <StatusBar backgroundColor="transparent" translucent />
+      {/* <SafeAreaView style={styles.background}> */}
+      {/* <SkeletonFbLoader /> */}
+      <Login />
+      {/* {user ? <Home /> : <Logout />} */}
+      {/* </SafeAreaView> */}
     </>
   );
 }

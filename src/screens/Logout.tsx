@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, StatusBar, View, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  StatusBar,
+  View,
+  SafeAreaView,
+  Image,
+} from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
 
 const Logout = () => {
@@ -16,21 +23,48 @@ const Logout = () => {
 
   return (
     <View>
-      <Input
-        placeholder="Usuario"
-        containerStyle={styles.inputForm}
-        onChange={(e) => onChange(e, "email")}
-        rightIcon={
-          <Icon
-            type="material-community"
-            name="at"
-            iconStyle={styles.iconRight}
-            tvParallaxProperties={undefined}
-          />
-        }
+      <Image
+        source={require("../../assets/img/5-tenedores-letras-icono-logo.png")}
+        resizeMode="contain"
+        style={styles.logo}
       />
-
-      <Text>PANTALLA LOGIN</Text>
+      <View style={styles.viewContainer}>
+        <Input
+          placeholder="Usuario"
+          containerStyle={styles.inputForm}
+          onChange={(e) => onChange(e, "user")}
+          rightIcon={
+            <Icon
+              type="material-community"
+              name="at"
+              iconStyle={styles.iconRight}
+              tvParallaxProperties={undefined}
+            />
+          }
+        />
+        <Input
+          placeholder="Contraseña"
+          containerStyle={styles.inputForm}
+          onChange={(e) => onChange(e, "password")}
+          // password={true}
+          secureTextEntry={showPassword ? false : true}
+          rightIcon={
+            <Icon
+              type="material-community"
+              name={showPassword ? "eye-outline" : "eye-off-outline"}
+              iconStyle={styles.iconRight}
+              onPress={() => setShowPassword(!showPassword)}
+              tvParallaxProperties={undefined}
+            />
+          }
+        />
+        <Button
+          title="Iniciar Sesion"
+          containerStyle={styles.btnContainerLogin}
+          buttonStyle={styles.btnLogin}
+          onPress={onSubmit}
+        />
+      </View>
     </View>
   );
 };
@@ -39,7 +73,7 @@ export default Logout;
 
 function defaultFormValue() {
   return {
-    email: "",
+    user: "",
     password: "",
   };
 }
@@ -63,5 +97,15 @@ const styles = StyleSheet.create({
   },
   iconRight: {
     color: "#c1c1c1",
+  },
+
+  viewContainer: {
+    marginLeft: 40,
+    marginRight: 40,
+  },
+  logo: {
+    width: "100%",
+    height: 150,
+    marginTop: 20,
   },
 });
