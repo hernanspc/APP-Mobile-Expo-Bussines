@@ -15,12 +15,12 @@ export default function App() {
 
   return (
     <>
-      <StatusBar barStyle="light-content" />
+      <StatusBar />
       <View>
         <StatusBar backgroundColor="#b8b8b8" />
 
         <SafeAreaView style={styles.background}>
-          <SkeletonFbLoader />
+          {/* <SkeletonFbLoader /> */}
           {user ? <Home /> : <Logout />}
         </SafeAreaView>
       </View>
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   background: {
-    backgroundColor: "#15212b",
+    backgroundColor: "#fff",
     height: "100%",
   },
 });

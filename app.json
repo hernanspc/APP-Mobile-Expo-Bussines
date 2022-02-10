@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "appBilleteraTS",
-    "slug": "appBilleteraTS",
+    "name": "App Bussiness Expo Cli TS",
+    "slug": "appmobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
