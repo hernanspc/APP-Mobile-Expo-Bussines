@@ -16,12 +16,10 @@ export default function App() {
 
   return (
     <>
-      {/* <StatusBar /> */}
       <StatusBar backgroundColor="transparent" translucent />
       {/* <SafeAreaView style={styles.background}> */}
       {/* <SkeletonFbLoader /> */}
-      <Login />
-      {/* {user ? <Home /> : <Logout />} */}
+      {user ? <Home /> : <Login />}
       {/* </SafeAreaView> */}
     </>
   );

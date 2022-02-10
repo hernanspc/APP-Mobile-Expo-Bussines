@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Header } from "../components/Header.ios";
-import MyTasksList from "../components/MyTasksList";
-import { TodoInput } from "../components/TodoInput";
-import Logout from "../screens/Logout";
+import MyLogin from "../components/MyLogin";
 
 interface Task {
   id: number;
@@ -14,7 +12,7 @@ export function Login() {
   return (
     <>
       {/* <Header /> */}
-      <MyTasksList />
+      <MyLogin />
     </>
   );
 }
