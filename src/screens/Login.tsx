@@ -2,17 +2,15 @@ import React, { useState } from "react";
 import { Header } from "../components/Header.ios";
 import MyLogin from "../components/MyLogin";
 
-interface Task {
-  id: number;
-  title: string;
-  done: boolean;
-}
+type Props = {
+  isLogger: () => void;
+};
 
-export function Login() {
+export function Login({ isLogger }: Props) {
   return (
     <>
       <Header />
-      <MyLogin />
+      <MyLogin isLogger={isLogger} />
     </>
   );
 }

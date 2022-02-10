@@ -8,13 +8,26 @@ import {
   Image,
 } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
+import { asyncFetchApi } from "../utils/api";
+import { EMPRESA_APK, EMPRESA } from "../utils/constants";
 
-const Logout = () => {
+type Props = {
+  isLogger: () => void;
+};
+const Logout = ({ isLogger }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(defaultFormValue());
 
   const onSubmit = () => {
-    console.log("solicito");
+    const postBody = {
+      Empresa: EMPRESA[0],
+      Nombre: formData.user,
+      Clave: formData.password,
+    };
+
+    console.log("postBody", postBody);
+
+    // isLogger();
   };
 
   const onChange = (e: { nativeEvent: { text: any } }, type: any) => {

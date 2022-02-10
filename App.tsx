@@ -12,14 +12,18 @@ import Logout from "./src/screens/Logout";
 import { Login } from "./src/screens/Login";
 
 export default function App() {
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState<boolean>(false);
+
+  const isLogger = () => {
+    setUser(true);
+  };
 
   return (
     <>
       <StatusBar backgroundColor="transparent" translucent />
       {/* <SafeAreaView style={styles.background}> */}
       {/* <SkeletonFbLoader /> */}
-      {user ? <Home /> : <Login />}
+      {user ? <Home /> : <Login isLogger={isLogger} />}
       {/* </SafeAreaView> */}
     </>
   );

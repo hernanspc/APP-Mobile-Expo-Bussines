@@ -16,8 +16,12 @@ const DATA = [
   },
 ];
 
-const MyLogin = () => {
-  const renderItem = () => <Logout />;
+type Props = {
+  isLogger: () => void;
+};
+
+const MyLogin = ({ isLogger }: Props) => {
+  const renderItem = () => <Logout isLogger={isLogger} />;
 
   return (
     <>
