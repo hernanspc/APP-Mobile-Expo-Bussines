@@ -22,8 +22,9 @@ type Props = {
   isLogger: () => void;
 };
 const Logout = ({ isLogger }: Props) => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [formData, setFormData] = useState(defaultFormValue());
+  const [loadingBtn, setLoadingBtn] = useState<boolean>(false);
 
   const postBody = {
     Empresa: EMPRESA[0],
@@ -31,20 +32,22 @@ const Logout = ({ isLogger }: Props) => {
     Clave: formData.password,
   };
 
-  const onSubmit = async () => {
-    console.log(
-      "body: ",
-      postBody.Empresa,
-      " | ",
-      postBody.Nombre,
-      postBody.Clave
-    );
-    // const postBody = {
-    //   Empresa: "REMESAS_JA",
-    //   Nombre: "admin",
-    //   Clave: "0716",
-    // };
+  const loginHandle = (userName: string, password: string) => {
+    setLoadingBtn(!loadingBtn);
 
+    if (formData.user.length == 0 || formData.password.length == 0) {
+      setLoadingBtn(!loadingBtn);
+      Alert.alert(
+        "¡Entrada incorrecta! ",
+        " El campo de nombre de usuario o contraseña no puede estar vacío.",
+        [{ text: "Ok" }]
+      );
+      return;
+    }
+    onSubmit();
+  };
+
+  const onSubmit = async () => {
     //`https://remesasandroid.azurewebsites.net/APP_TSP_LOGIN_SISTEMA`
     await fetch(API_BASE_URL + apis.LOGIN_SISTEMA, {
       method: "POST",
@@ -54,15 +57,13 @@ const Logout = ({ isLogger }: Props) => {
       body: JSON.stringify(postBody),
     })
       .then((response) => response.json())
-      //Then with the data from the response in JSON...
       .then((data) => {
         if (data.length > 0) {
-          // console.log("OK");
           console.log("response: ", data);
           isLogger();
         } else {
           console.log("Ingreso Failed");
-          // setFormData(defaultFormValue());
+          setLoadingBtn(false);
           Alert.alert(
             "¡Usuario no válido! ",
             " El nombre de usuario o la contraseña son incorrectos.",
@@ -74,7 +75,6 @@ const Logout = ({ isLogger }: Props) => {
       .catch((error) => {
         console.log("Catch error: ", error);
       });
-    // isLogger();
   };
 
   const onChange = (e: { nativeEvent: { text: any } }, type: any) => {
@@ -110,7 +110,6 @@ const Logout = ({ isLogger }: Props) => {
           placeholder="Contraseña"
           containerStyle={styles.inputForm}
           onChange={(e) => onChange(e, "password")}
-          // password={true}
           secureTextEntry={showPassword ? false : true}
           rightIcon={
             <Icon
@@ -126,7 +125,10 @@ const Logout = ({ isLogger }: Props) => {
           title="Iniciar Sesion"
           containerStyle={styles.btnContainerLogin}
           buttonStyle={styles.btnLogin}
-          onPress={onSubmit}
+          onPress={() => {
+            loginHandle(formData.user, formData.password);
+          }}
+          loading={loadingBtn}
         />
       </View>
     </View>
