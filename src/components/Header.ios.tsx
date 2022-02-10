@@ -5,9 +5,9 @@ export function Header() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Notion</Text>
+        <Text style={styles.headerText}></Text>
         <Text style={[styles.headerText, { fontFamily: "Poppins-SemiBold" }]}>
-          To do
+          Sistema
         </Text>
       </View>
     </SafeAreaView>
@@ -16,16 +16,20 @@ export function Header() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#273FAD",
+    // backgroundColor: "#273FAD",
+    // backgroundColor: "#00a680",
   },
   header: {
-    paddingBottom: 44,
-    backgroundColor: "#273FAD",
+    paddingBottom: 30,
+    // backgroundColor: "#273FAD",
+    backgroundColor: "#00a680",
+
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
   },
   headerText: {
+    marginTop: 10,
     fontSize: 24,
     color: "#FFF",
     fontFamily: "Poppins-Regular",

@@ -24,7 +24,11 @@ const Logout = () => {
   return (
     <View>
       <Image
-        source={require("../../assets/img/5-tenedores-letras-icono-logo.png")}
+        // source={require("../../assets/app-img/emp_hadax.png")}
+        // source={require("../../assets/app-img/emp_multiplan.png")}
+        // source={require("../../assets/app-img/illustrations_not_combo_active.png")}
+        // source={require("../../assets/app-img/illustrations_plan_pospago.png")}
+        source={require("../../assets/app-img/plh_app_update.png")}
         resizeMode="contain"
         style={styles.logo}
       />
