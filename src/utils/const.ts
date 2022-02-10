@@ -18,8 +18,7 @@ export const COMPLETE_MONTHS = [
 ];
 
 export const apis = {
-    TOPUP_OPTIONS:'/claro-facade-topup/topup-options',
-    LOGIN_SISTEMA:'APP_TSP_LOGIN_SISTEMA',
+    LOGIN_SISTEMA:'/APP_TSP_LOGIN_SISTEMA',
     BAU_SERVICE:'/bau',
 };
 

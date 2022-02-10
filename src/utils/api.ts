@@ -14,11 +14,14 @@ export {axiosClientInstance, axiosServerInstance};
 
 const asyncFetchApi = async (path: string, opts?: any,  callBack?: any) => {
   const url = path;
+
   return await axiosClientInstance({
     url,
     ...opts,
   })
     .then((res) => {
+  console.log('url ',url)
+
       if (callBack) {
         callBack(res.data);
       }

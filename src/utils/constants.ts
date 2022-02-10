@@ -1,4 +1,5 @@
 export const API_BASE_URL = 'https://remesasandroid.azurewebsites.net';
+export const API_HOST  = 'https://remesasandroid.azurewebsites.net';
 export const EMPRESA_APK = 'REMESAS_JA';
 export const EMPRESA =  ["REMESAS_JA", "REMESAS_GUEDEZ"]
 

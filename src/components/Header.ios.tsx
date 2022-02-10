@@ -5,10 +5,10 @@ export function Header() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}></Text>
-        <Text style={[styles.headerText, { fontFamily: "Poppins-SemiBold" }]}>
+        <Text style={styles.headerText}>Sistema</Text>
+        {/* <Text style={[styles.headerText, { fontFamily: "Poppins-SemiBold" }]}>
           Sistema
-        </Text>
+        </Text> */}
       </View>
     </SafeAreaView>
   );
@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 24,
     color: "#FFF",
-    fontFamily: "Poppins-Regular",
+    // fontFamily: "Poppins-Regular",
   },
 });

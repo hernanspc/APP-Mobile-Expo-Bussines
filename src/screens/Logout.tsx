@@ -6,10 +6,17 @@ import {
   View,
   SafeAreaView,
   Image,
+  Alert,
 } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
-import { asyncFetchApi } from "../utils/api";
-import { EMPRESA_APK, EMPRESA } from "../utils/constants";
+import { asyncFetchApi, fetchApiEffect } from "../utils/api";
+import { apis } from "../utils/const";
+import {
+  EMPRESA_APK,
+  EMPRESA,
+  API_BASE_URL,
+  API_HOST,
+} from "../utils/constants";
 
 type Props = {
   isLogger: () => void;
@@ -18,15 +25,55 @@ const Logout = ({ isLogger }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(defaultFormValue());
 
-  const onSubmit = () => {
-    const postBody = {
-      Empresa: EMPRESA[0],
-      Nombre: formData.user,
-      Clave: formData.password,
-    };
+  const postBody = {
+    Empresa: EMPRESA[0],
+    Nombre: formData.user,
+    Clave: formData.password,
+  };
 
-    console.log("postBody", postBody);
+  const onSubmit = async () => {
+    console.log(
+      "body: ",
+      postBody.Empresa,
+      " | ",
+      postBody.Nombre,
+      postBody.Clave
+    );
+    // const postBody = {
+    //   Empresa: "REMESAS_JA",
+    //   Nombre: "admin",
+    //   Clave: "0716",
+    // };
 
+    //`https://remesasandroid.azurewebsites.net/APP_TSP_LOGIN_SISTEMA`
+    await fetch(API_BASE_URL + apis.LOGIN_SISTEMA, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(postBody),
+    })
+      .then((response) => response.json())
+      //Then with the data from the response in JSON...
+      .then((data) => {
+        if (data.length > 0) {
+          // console.log("OK");
+          console.log("response: ", data);
+          isLogger();
+        } else {
+          console.log("Ingreso Failed");
+          // setFormData(defaultFormValue());
+          Alert.alert(
+            "¡Usuario no válido! ",
+            " El nombre de usuario o la contraseña son incorrectos.",
+            [{ text: "Ok" }]
+          );
+          return;
+        }
+      })
+      .catch((error) => {
+        console.log("Catch error: ", error);
+      });
     // isLogger();
   };
 
@@ -53,7 +100,7 @@ const Logout = ({ isLogger }: Props) => {
           rightIcon={
             <Icon
               type="material-community"
-              name="at"
+              name="account"
               iconStyle={styles.iconRight}
               tvParallaxProperties={undefined}
             />
