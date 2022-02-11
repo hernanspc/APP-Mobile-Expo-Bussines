@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Header } from "../components/Header.ios";
+import {
+  Image,
+  Platform,
+  StatusBar,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { HeaderIos } from "../components/Header.ios";
+import { Header } from "../components/Header";
 import MyLogin from "../components/MyLogin";
 
 type Props = {
@@ -9,7 +19,7 @@ type Props = {
 export function Login({ isLogger }: Props) {
   return (
     <>
-      <Header />
+      {Platform.OS === "ios" ? <HeaderIos /> : <Header />}
       <MyLogin isLogger={isLogger} />
     </>
   );

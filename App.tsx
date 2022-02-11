@@ -24,9 +24,14 @@ export default function App() {
 
   return (
     <>
-      <StatusBar backgroundColor="transparent" translucent />
+      {/* <StatusBar backgroundColor="transparent" translucent /> */}
+      <StatusBar
+        barStyle={"light-content"}
+        backgroundColor="transparent"
+        translucent
+      />
+
       {/* <SafeAreaView style={styles.background}> */}
-      {/* <SkeletonFbLoader /> */}
       {user ? <Home signOff={signOff} /> : <Login isLogger={logIn} />}
       {/* </SafeAreaView> */}
     </>

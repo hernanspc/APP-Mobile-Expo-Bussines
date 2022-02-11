@@ -1,14 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 
-export function Header() {
+export function HeaderIos() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Sistema</Text>
-        {/* <Text style={[styles.headerText, { fontFamily: "Poppins-SemiBold" }]}>
-          Sistema
-        </Text> */}
       </View>
     </SafeAreaView>
   );
@@ -17,7 +14,9 @@ export function Header() {
 const styles = StyleSheet.create({
   container: {
     // backgroundColor: "#273FAD",
-    // backgroundColor: "#00a680",
+    backgroundColor: "#00a680",
+    // borderBottomLeftRadius: 30,
+    // borderBottomRightRadius: 30,
   },
   header: {
     paddingBottom: 30,
@@ -27,6 +26,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
+    // borderBottomLeftRadius: 30,
+    // borderBottomRightRadius: 30,
   },
   headerText: {
     marginTop: 10,
