@@ -21,14 +21,14 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/light.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.notionapp.notionapp",
       "versionCode": 1
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/light.png"
     },
     "description": ""
   }
